@@ -1,0 +1,114 @@
+
+    <header>
+        <div id="header">
+            <div id="headerIn" class="container-fluid"><!--id="header"-->
+                <div class="row clearfix"><!--id="headerIn"-->
+                    <h1 id="headerLogo" class="col-md-7 col-sm-10 col-10">
+                        <a class="op" routerLink=""><img src="{{logo}}" alt=""></a> 
+                    </h1> <!--logo-->
+                    <div id="headerLinks" class="col-md-5 col-sm-2 col-2 clearfix">
+                        <p class="navbarToggle visibleTS">
+                            <i class="fas fa-bars"></i>
+                        </p>
+                        <ul class="clerfix header-links">
+                            <li><a class="op"><i class="fab fa-twitter"></i></a></li>
+                            <li><a class="op"><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="bdr-right"><a class="op"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li class="lang-change bdr-left dropdown-wrapper">
+                                <a href="javascript:void(0)">Language <i class="fas fa-chevron-down"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a>English</a></li>
+                                    <li><a>Hindi</a></li>                                  
+                                </ul>
+                            </li>
+                            <!-- <li class="search">
+                                <form >
+                                    <input type="text" class="field-search form-control" placeholder="Search">
+                                    <div class="search-btn">
+                                      <input type="radio" class="show-field">
+                                      <button>
+                                        <i class="fas fa-search"></i>
+                                      </button>
+                                    </div>
+                                </form>
+                            </li> -->
+                            <li *ngIf="!authService.isLoggedIn()" class="bdr-right"><a routerLink="/signin">Sign In</a></li>
+                            <li *ngIf="!authService.isLoggedIn()" class="bdr-left"><a routerLink="/login">Log In</a></li>
+
+                            <li *ngIf="authService.isLoggedIn()" 
+                            (click)="authService.logout()" class="bdr-left"><a routerLink="/login">Log Out</a></li>
+                        </ul>
+                    </div><!--headerLinks-->
+                </div>
+            </div><!-- /#headerIn -->
+            <nav class="navbarCollapse">
+                <ul class="clearfix">
+                    <li><a routerLink="">Home</a></li>
+                    <li><a >About</a></li>
+                    <li><a href="javascript:void(0)" >Courses <i class="fas fa-chevron-down"></i></a>
+                        <ul class="pulldownmenu">
+                            <li><a>Course 1</a></li>
+                            <li><a>Course 1</a></li>
+                        </ul>
+                    </li>
+                    <li><a >Faculty</a></li>
+                    <li><a href="javascript:void(0)" >Training <i class="fas fa-chevron-down"></i></a>
+                        <ul class="pulldownmenu">
+                            <li><a>Training 1</a></li>
+                            <li><a>Training 1</a></li>
+                        </ul>
+                    </li>
+                    <li><a >Photo Gallery</a></li>
+                    <li><a href="javascript:void(0)" >News & Events <i class="fas fa-chevron-down"></i></a>
+                        <ul class="pulldownmenu">
+                            <li><a>Events 1</a></li>
+                            <li><a>News 1</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="javascript:void(0)" >Language <i class="fas fa-chevron-down"></i></a>
+                        <ul class="pulldownmenu">
+                            <li><a>English</a></li>                                    
+                            <li><a>Hindi</a></li>                                  
+                        </ul>
+                    </li>
+                    <li><a>My Account</a></li>
+                    <li><a>Logout</a></li>
+                    <li class="navbar-icon">
+                        <a class="op"><i class="fab fa-twitter"></i></a>
+                        <a class="op"><i class="fab fa-facebook-f"></i></a>
+                        <a class="op"><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                </ul>
+            </nav><!-- /.navbar-collapse -->
+        </div><!-- /#header -->
+        <div class="daily-update marquee">
+            <span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut lao  </span>
+        </div>
+        <div id="gNavi" class="wow fadeInUp">
+            <nav class="inner-navi">
+                <ul class="clearfix">
+                    <li *ngIf="authService.isLoggedIn()">
+                        <a routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            Home <i *ngIf="item.menuChild" class="fas fa-chevron-down"></i>
+                        </a>
+                    </li>
+                    <li *ngFor="let item of menu;let i = index">
+                        <a routerLink="{{item.menuItem}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                            {{item.menuItem}} <i *ngIf="item.menuChild" class="fas fa-chevron-down"></i>
+                        </a>
+                        <!-- <ng-template #otherLink>
+                            <a routerLink="{{item.menuItem}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                                {{item.menuItem}} <i *ngIf="item.menuChild" class="fas fa-chevron-down"></i>
+                            </a>
+                        </ng-template> -->
+                        <ul *ngIf="item.menuChild" class="pulldownmenu"> 
+                            <li *ngFor="let childItem of item.menuChild">
+                                <a>{{childItem.menuItem}}</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav><!-- /#gNavi -->
+        </div>
+    </header>
+

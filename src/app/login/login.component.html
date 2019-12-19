@@ -1,0 +1,44 @@
+<!-- inner contact Start-->
+<section class="section contact-us1">
+   <div class="container">
+      <div class="row"> 
+         <div class="col-sm-6 offset-sm-3">
+            <form [formGroup]="logIn" (ngSubmit)="logInSubmit()">
+                <h3 class="subTitle black-clr m-bottom-10 p-left-15 text-center">LOGIN</h3>
+                <div class="basic-info-sec">
+                     <div class="row">
+                        <div class="form-group col-sm-12">
+                            <label for="fname">Email Address</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter Email Address" formControlName="email">
+                            <div class="error" *ngIf="submitted && f.email.errors">
+                                <span *ngIf="f.email.errors.required">Please enter email</span>
+                                <span *ngIf="f.email.errors.pattern">Please enter valid email id</span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12">
+                            <label for="email">Password</label>
+                            <input type="password" class="form-control" id="passwd" placeholder="Enter Password" formControlName="passwd">
+                            <div class="error" *ngIf="submitted && f.passwd.errors">
+                                <span *ngIf="f.passwd.errors.required">
+                                    Please enter password
+                                </span>
+                                <span *ngIf="f.passwd.errors.minlength">
+                                    Please enter minimum 6 character
+                                </span>
+                                <span *ngIf="f.passwd.errors.maxlength">
+                                    Please enter maximum 8 character
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group col-sm-12 text-center">
+                           <button type="submit" class="common-btn">Log In</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <p class="error">{{f.email.value}}</p>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- inner contact End-->

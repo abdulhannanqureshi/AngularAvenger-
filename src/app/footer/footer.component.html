@@ -1,0 +1,55 @@
+ <footer>
+        <div id="footer">
+            <div class="pageTop"><a href="#"><i class="fas fa-fighter-jet"></i></a></div>
+            <div class="inner-footer">
+                <div class="row">
+                    <div class="col-md-3 col-sm-12 wow slideInLeft">
+                        <p class="foot-logo"><a class="op" routerLink=""><img src="{{logo}}" alt=""></a></p>
+                        <h2 class="foot-title m-bottom-10">Google Map</h2>
+                        <p class="google-map"><img src="{{mapImg}}" alt="Google Map"></p>
+                    </div>
+                    <div class="col-md-3 col-sm-12 footer-links wow slideInUp p-left-40">
+                        <h2 class="foot-title">Resources</h2>
+                        <ul>
+                            <li *ngFor="let item of resourMenu">
+                                <a routerLink="{{item.item}}"><i class="fas fa-minus"></i> {{item.item}}</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-12 footer-links wow slideInUp p-left-20">
+                        <h2 class="foot-title">Quick Links</h2>
+                        <ul>
+                            <li *ngFor="let menuItem of quickMenu">
+                                <a routerLink="{{menuItem.item}}"><i class="fas fa-minus"></i>{{menuItem.item}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-12 footer-links wow slideInRight">
+                        <h2 class="foot-title">About</h2>
+                        <ul>
+                            <li *ngFor="let aboutMenu of aboutMenu">
+                                <a routerLink="{{aboutMenu.item}}"><i class="fas fa-minus"></i> {{aboutMenu.item}}</a>
+                            </li>
+                        </ul>
+                        <!-- <form>
+                            <div class="subscribe">
+                                <input type="text" class="form-control" placeholder="Yourmail@gmail.com">
+                                <div class="input-group-btn">
+                                    <button class="sub-btn" type="submit"><i class="fas fa-arrow-right"></i></button>
+                                </div>
+                            </div>
+                        </form> -->
+                        <ul class="social-links">
+                            <li><a href="#"><i class="fab fa-telegram-plane"></i></a></li>
+                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <p id="copyright">Coyright © 2012-2018. All rights reserved.</p>
+        </div><!-- /#footer -->
+    </footer>

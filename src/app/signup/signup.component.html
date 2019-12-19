@@ -1,0 +1,142 @@
+ <!--inner contact Start-->
+<section class="section contact-us1">
+   <div class="container">
+      <div class="row">
+         <div class="col-sm-12">
+            <form [formGroup]="signUp" (ngSubmit)="signUpSubmit()">
+               <h3 class="subTitle black-clr m-bottom-10 p-left-15 text-center">Sign up</h3>
+               <p class="common-text black-clr m-bottom-20 p-left-15 text-center">Reach out to us for inquiry</p>
+               <div class="basic-info-sec">
+                     <div class="row">
+                        <div class="form-group col-sm-12">
+                           <label for="fname">Full Name</label>
+                        	<input type="text" class="form-control" id="fname" placeholder="Full Name" formControlName="fname">
+							<div class="error" *ngIf="submitted && inF.fname.errors">
+								<span *ngIf="inF.fname.errors.required">Please enter the full name</span>
+							</div>
+                     </div>
+                        <div class="form-group col-sm-12">
+                           <label for="email">Email Address</label>
+                        	<input type="email" class="form-control" id="email" placeholder="xyz@iaa.com" formControlName="email">
+                        	<div class="error" *ngIf="submitted && inF.email.errors">
+                        		<span *ngIf="inF.email.errors.required">
+                        			Please enter email address. 
+                        		</span>
+                        		<span *ngIf="inF.email.errors.email">
+                        			Please enter valid email address. 
+                        		</span>
+                        	</div>
+                     </div>
+                     <div class="form-group col-sm-12">
+                           <label for="email">Password</label>
+                        	<input type="password" class="form-control" id="pass" placeholder="Enter Password" formControlName="pass">
+                        	<div class="error" *ngIf="submitted && inF.pass.errors">
+                        		<span *ngIf="inF.pass.errors.required">Please enter password</span>
+                        		<span *ngIf="inF.pass.errors.minlength">
+                        			Please enter minimun 6 character
+                        		</span>
+                        		<span *ngIf="inF.pass.errors.maxlength">
+                        			Please enter maximun 8 character
+                        		</span>
+
+                        	</div>
+                     </div>
+                     <div class="form-group col-sm-12">
+                        <label for="email">Select Categeory</label>
+                        <select name="" id="" class="form-control" formControlName="categeory">
+                           <option value="Select Category">Select Category</option>
+                           <option value="User1">User</option>
+                           <option value="Admin1">Admin</option>
+                        </select>
+                        <div class="error" *ngIf="submitted && inF.categeory.errors">
+                        	<span *ngIf="inF.categeory.errors.required">Please select categeory</span>
+                        </div>
+                     </div>
+                     <div class="form-group col-sm-12">
+                        <label for="">Document</label>
+                         <div class="browse-file-section">
+                             <input type="file" name="" class="file-hidden file" formControlName="file">
+                             <div class="input-group">
+                                 <input type="text" class="form-control" disabled="" placeholder="Upload Image">
+                                 <span class="input-group-btn">
+                                     <button class="browse btn btn-primary input-lg" type="button"><i class="fa fa-upload" aria-hidden="true"></i> Browse</button>
+                                 </span>
+                             </div>
+                         </div>
+                         <div class="error" *ngIf="submitted && inF.file.errors">
+                         	<span>Please upload Document.</span>
+                         </div>
+                     </div>
+                     <div class="form-group col-sm-12 text-sms">
+                           <label for="email">Gender</label>
+                           <div>
+                              <div class="radio-type">
+                
+                               <div class="radio">
+                               <label>
+                                 <input type="radio"  formControlName="gen" value="Male" checked="">
+                                 <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+                                 Male
+                               </label>
+                               </div>
+                               <div class="radio">
+                               <label>
+                                 <input type="radio"  formControlName="gen" value="Female">
+                                 <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+                                 Female
+                               </label> 
+                               </div> 
+
+                                </div>
+                                <div class="error" *ngIf="submitted && inF.gen.errors">
+                                	<span>Please select gender.</span>
+                                </div>
+                           </div>
+                     </div>
+                     <div class="form-group col-sm-12 text-sms">
+                           <label for="email">Message</label>
+                           <textarea name="" id="" cols="30" rows="7" placeholder="Message" formControlName="message"></textarea>
+                           <div class="error" *ngIf="submitted && inF.message.errors">
+                           		<span *ngIf="inF.message.errors.required">Please enter message</span>
+                           		<span *ngIf="inF.message.errors.minlength">Please enter minimum 10 character</span>
+                           </div>
+                     </div>
+                        <div class="form-group col-sm-12 m-top-20">
+                            <div class="text-center">
+                                <button type="submit" class="common-btn">Submit</button>
+                                <button type="reset" class="common-btn" (click)="onReset()">Reset</button>
+                            </div>
+                        </div>
+                     </div>
+                  </div>
+            </form>
+            <p class="error">{{inF.fname.value }}</p>
+            <div>
+                <table class="table table-bordered table-condensed table-striped ">
+                    <tr>
+                    	<th>S.No.</th>
+                    	<th>Full Name</th>
+                        <th>Email Address</th> 
+                        <th>Password</th> 
+                    	<th>Select Categeory</th> 
+                        <th>Document</th>
+                        <th>Gender</th>
+                    	<th>Message</th>
+                    </tr>
+                    <tr *ngFor="let item of formData;let i=index">
+                        <td>{{i+1}}</td>
+                    	<td>{{item.fname}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.pass}}</td>
+                        <td>{{item.categeory}}</td>
+                        <td>{{item.file}}</td>
+                        <td>{{item.gen}}</td>
+                    	<td>{{item.message}}</td>
+                    </tr>
+                </table>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- inner contact End-->
