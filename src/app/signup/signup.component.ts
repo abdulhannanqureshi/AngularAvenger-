@@ -14,9 +14,12 @@ export class SignupComponent implements OnInit {
   formData = [];
   signUp:FormGroup; // variable for form name and form grouping
   submitted = false; // variable for validation
+  editStatus = false; // variable for edit Status
+  idEdit = 0;
 
   constructor(private fb:FormBuilder, public signupService:SignupService) { }
   ngOnInit() {
+
   	this.signUp = this.fb.group({
   		fname: ['hannan',Validators.required],
   		email: ['',[Validators.required, Validators.email]],
@@ -50,17 +53,44 @@ export class SignupComponent implements OnInit {
   	// for form data not send when each field not fill 
   	if(this.signUp.invalid){
   		return false;
+          alert("valid");
   	}
-      console.log(this.signUp.value);
-      // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.signUp.value, null, 4));
-    
-    // for formdata ko empty array me push kraya hai  
-    this.formData.push(this.signUp.value);
-    console.log("formdata",this.formData); 
-  	this.onReset();
+    else if(this.editStatus){
+        // for formdata ke edit place pe data update k liye
+        this.formData.splice(this.idEdit, 1, this.signUp.value);
+        this.editStatus = false;
+         alert("edit");
+    }
+    else{
+        // for formdata ko empty array me push kraya hai 
+        this.formData.push(this.signUp.value);
+        console.log("formdata",this.formData); 
+         alert("submit");
+    }
+
+    // for store form data in local storage
+    localStorage.setItem('signUpData', JSON.stringify(this.formData));
+
+      this.onReset();
   }
   onReset(){
     this.submitted = false; // variable for validation
     this.signUp.reset();
+  }
+  // for delete use details 
+  deleteUser(x){
+      this.formData.splice(x,1);
+  }
+  // for edit use details 
+  editUser(y){
+        this.idEdit = y;
+        this.signUp.patchValue({
+           fname: this.formData[y].fname,
+           email: this.formData[y].email,
+           pass: this.formData[y].pass,
+           categeory:this.formData[y].categeory,
+           message:this.formData[y].message 
+        });
+        this.editStatus = true;
   }
 }

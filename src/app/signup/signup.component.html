@@ -43,7 +43,7 @@
                      </div>
                      <div class="form-group col-sm-12">
                         <label for="email">Select Categeory</label>
-                        <select name="" id="" class="form-control" formControlName="categeory">
+                        <select name="" id="categeory" class="form-control" formControlName="categeory">
                            <option value="Select Category">Select Category</option>
                            <option value="User1">User</option>
                            <option value="Admin1">Admin</option>
@@ -95,7 +95,7 @@
                      </div>
                      <div class="form-group col-sm-12 text-sms">
                            <label for="email">Message</label>
-                           <textarea name="" id="" cols="30" rows="7" placeholder="Message" formControlName="message"></textarea>
+                           <textarea name="" id="message" cols="30" rows="7" placeholder="Message" formControlName="message"></textarea>
                            <div class="error" *ngIf="submitted && inF.message.errors">
                            		<span *ngIf="inF.message.errors.required">Please enter message</span>
                            		<span *ngIf="inF.message.errors.minlength">Please enter minimum 10 character</span>
@@ -111,7 +111,7 @@
                   </div>
             </form>
             <p class="error">{{inF.fname.value }}</p>
-            <div>
+            <div class="responsive-table">
                 <table class="table table-bordered table-condensed table-striped ">
                     <tr>
                     	<th>S.No.</th>
@@ -122,6 +122,8 @@
                         <th>Document</th>
                         <th>Gender</th>
                     	<th>Message</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                     <tr *ngFor="let item of formData;let i=index">
                         <td>{{i+1}}</td>
@@ -130,8 +132,10 @@
                         <td>{{item.pass}}</td>
                         <td>{{item.categeory}}</td>
                         <td>{{item.file}}</td>
-                        <td>{{item.gen}}</td>
+                        <td>{{item.gen}}</td> 
                     	<td>{{item.message}}</td>
+                        <td><button class="common-btn1" (click)="editUser(i)">Edit</button></td>
+                        <td><button class="common-btn1" (click)="deleteUser(i)">Delete</button></td>
                     </tr>
                 </table>
             </div>

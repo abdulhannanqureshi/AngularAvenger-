@@ -96,6 +96,17 @@
   color: red;
   font-size: ;
 }
+.responsive-table{
+    overflow: auto;
+}
+.common-btn1{
+    background: #ffc70f;
+    border: 0;
+    padding: 5px 8px;
+    border-radius: 50px;
+    min-width: 62px;
+    font-size: 14px;
+}
 @media screen and (max-width: 1200px) {
 
   ::ng-deep #wrapper .contact-us1 .container {
